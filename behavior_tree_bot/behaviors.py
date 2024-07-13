@@ -54,12 +54,21 @@ def attack_strongest_enemy_planet(state):
 
 
 def reinforce_planets(state):
-    if len(state.my_fleets()) >= 2:  # Allow multiple fleets to be sent
+    # Find planets that are weak and need reinforcements
+    weak_planets = [planet for planet in state.my_planets() if planet.num_ships < 20]
+
+    # Find strong planets that can send reinforcements
+    strong_planets = [planet for planet in state.my_planets() if planet.num_ships > 50]
+
+    if not weak_planets or not strong_planets:
         return False
 
-    my_planets = state.my_planets()
-    if not my_planets:
-        return False
-
-    strongest_planet = max(my_planets, key=lambda p: p.num_ships)
+    # Send reinforcements from the strongest planet to the weakest planet
+    for weak_planet in weak_planets:
+        closest_strong_planet = min(strong_planets, key=lambda p: state.distance(p.ID, weak_planet.ID))
+        ships_to_send = min(closest_strong_planet.num_ships // 2, 20)
+        
+        if ships_to_send > 0:
+            issue_order(state, closest_strong_planet.ID, weak_planet.ID, ships_to_send)
     
+    return True
