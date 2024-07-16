@@ -2,7 +2,7 @@ INFO:root:
 Selector: High Level Strategy
 | Sequence: Early Game Strategy
 | | Check: check_early_game
-| | Action: spread_to_weakest_neutral_planet
+| | Action: mass_expansion
 | Sequence: Mid Game Strategy
 | | Check: check_mid_game
 | | Action: coordinated_expansion_strategy
@@ -17,13 +17,13 @@ DEBUG:root:Executing:Selector: High Level Strategy
 DEBUG:root:Executing:Sequence: Early Game Strategy
 DEBUG:root:Executing:Check: check_early_game
 DEBUG:root:Result: Check: check_early_game -> Success
-DEBUG:root:Executing:Action: spread_to_weakest_neutral_planet
+DEBUG:root:Executing:Action: mass_expansion
 DEBUG:root:Order:1 17 20.0
 DEBUG:root:Order:1 18 20.0
 DEBUG:root:Order:1 11 20.0
 DEBUG:root:Order:1 12 20.0
 DEBUG:root:Order:1 5 20.0
-DEBUG:root:Result: Action: spread_to_weakest_neutral_planet -> Success
+DEBUG:root:Result: Action: mass_expansion -> Success
 DEBUG:root:Result: Sequence: Early Game Strategy -> Success
 DEBUG:root:Result: Selector: High Level Strategy -> Success
 DEBUG:root:Finish turn
