@@ -18,18 +18,18 @@ def setup_behavior_tree():
 
     early_game_strategy = Sequence(name='Early Game Strategy')
     is_early_game = Check(check_early_game)
-    spread_action = Action(spread_to_weakest_neutral_planet)
+    spread_action = Action(mass_expansion)
     early_game_strategy.child_nodes = [is_early_game, spread_action]
 
     mid_game_strategy = Sequence(name='Mid Game Strategy')
     is_mid_game = Check(check_mid_game)
-    coordinated_expansion = Action(coordinated_expansion_strategy)
+    coordinated_expansion = Action(coordinated_expansion)
     reinforce_action = Action(reinforce_weakest_planet)
     mid_game_strategy.child_nodes = [is_mid_game, coordinated_expansion, reinforce_action]
 
     late_game_strategy = Sequence(name='Late Game Strategy')
     is_late_game = Check(check_late_game)
-    coordinated_attack = Action(coordinated_attack_strategy)
+    coordinated_attack = Action(coordinated_attack)
     consolidate_action = Action(reinforce_weakest_planet)
     late_game_strategy.child_nodes = [is_late_game, coordinated_attack, consolidate_action]
 
