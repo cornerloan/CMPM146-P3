@@ -1,0 +1,13 @@
+Selector: High Level Strategy
+| Sequence: Early Game Strategy
+| | Check: check_early_game
+| | Action: mass_expansion
+| Sequence: Mid Game Strategy
+| | Check: check_mid_game
+| | Action: coordinated_expansion_strategy
+| | Action: reinforce_weakest_planet
+| Sequence: Late Game Strategy
+| | Check: check_late_game
+| | Action: coordinated_attack_strategy
+| | Action: reinforce_weakest_planet
+| Action: coordinated_attack_strategy
