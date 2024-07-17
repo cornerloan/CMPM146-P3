@@ -33,7 +33,7 @@ def setup_behavior_tree():
     consolidate_action = Action(reinforce_weakest_planet)
     late_game_strategy.child_nodes = [is_late_game, coordinated_attack, consolidate_action]
 
-    root.child_nodes = [early_game_strategy, mid_game_strategy, late_game_strategy, Action(attack_weakest_enemy_planet)]
+    root.child_nodes = [early_game_strategy, mid_game_strategy, late_game_strategy, Action(coordinated_attack_strategy)]
 
     logging.info('\n' + root.tree_to_string())
     return root

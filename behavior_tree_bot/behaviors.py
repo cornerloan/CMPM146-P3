@@ -2,9 +2,10 @@ import sys
 sys.path.insert(0, '../')
 from planet_wars import issue_order
 
+max_fleets_to_send = 30
 
 def attack_weakest_enemy_planet(state):
-    if len(state.my_fleets()) >= 1:
+    if len(state.my_fleets()) >= max_fleets_to_send:
         return False
 
     #get my strongest planet, and the opponent's weakest planet
@@ -20,7 +21,7 @@ def attack_weakest_enemy_planet(state):
 
 
 def mass_expansion(state):
-    if len(state.my_fleets()) >= 1:
+    if len(state.my_fleets()) >= max_fleets_to_send:
         return False
 
     #determine the 5 weakest neutral planets and my 3 strongest planets
@@ -42,7 +43,7 @@ def mass_expansion(state):
 
 
 def reinforce_planets(state):
-    if len(state.my_fleets()) >= 1:
+    if len(state.my_fleets()) >= max_fleets_to_send:
         return False
 
     enemy_fleets = state.enemy_fleets()
@@ -78,7 +79,7 @@ def reinforce_planets(state):
 
 
 def reinforce_weakest_planet(state):
-    if len(state.my_fleets()) >= 1:
+    if len(state.my_fleets()) >= max_fleets_to_send:
         return False
 
     #check if there are any enemy fleets currently deployed
@@ -123,7 +124,7 @@ def reinforce_weakest_planet(state):
 
 def coordinated_attack_strategy(state):
     #get my strongest 5 planets, and the weakest enemy planet
-    strong_planets = sorted(state.my_planets(), key=lambda p: p.num_ships, reverse=True)[:5]
+    strong_planets = sorted(state.my_planets(), key=lambda p: p.num_ships, reverse=True)[:3]
     enemy_planets = sorted(state.enemy_planets(), key=lambda p: p.num_ships)
 
     #check if they exist
